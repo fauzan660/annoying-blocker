@@ -1,3 +1,4 @@
+import ANSITerminal
 import Foundation
 
 let grant = ["Yes", "No"]
@@ -14,8 +15,25 @@ if granted != 1 {
   try process.run()
   process.waitUntilExit()
 
-  let result = directoryScan(path: "/Applications")
-  print(result)
+  let app_list = directoryScan(path: "/Applications")
+  let app = confirmationPicker(
+    question: "Choose the app you would like to block", options: app_list)
+
+  let slots = 3
+  var results: [(String, String)] = []
+
+  for i in 1...slots {
+    let start = timePicker(question: "Slot \(i) start time:")
+    let end = timePicker(question: "Slot \(i) end time:")
+    results.append((start, end))
+  }
+
+  write(CSI, "2J")
+  write(CSI, "1H")
+  print("Your blocked time slots:")
+  for (i, slot) in results.enumerated() {
+    print("Slot \(i + 1): \(slot.0) - \(slot.1)")
+  }
 
 } else {
   print("Access denied. Some features may not work.")

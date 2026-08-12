@@ -1,19 +1,17 @@
 import Foundation
 
 // File1.swift
-func directoryScan(path: String) -> Int {
+func directoryScan(path: String) -> [String] {
   let fm = FileManager.default
 
   do {
+    print("Found items")
     let items = try fm.contentsOfDirectory(atPath: path)
 
-    for item in items {
-      print("Found \(item)")
-    }
-    return 1
+    return items
   } catch {
     print("Error scanning dir")
     // failed to read directory – bad permissions, perhaps?
   }
-  return 0
+  return []
 }
