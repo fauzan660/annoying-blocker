@@ -1,4 +1,3 @@
-import ANSITerminal
 import Foundation
 
 let grant = ["Yes", "No"]
@@ -27,13 +26,7 @@ if granted != 1 {
     let end = timePicker(question: "Slot \(i) end time:")
     results.append((start, end))
   }
-
-  write(CSI, "2J")
-  write(CSI, "1H")
-  print("Your blocked time slots:")
-  for (i, slot) in results.enumerated() {
-    print("Slot \(i + 1): \(slot.0) - \(slot.1)")
-  }
+  timePickerDisp(results: results)
 
 } else {
   print("Access denied. Some features may not work.")

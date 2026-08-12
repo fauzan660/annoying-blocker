@@ -1,6 +1,17 @@
 import ANSITerminal
 import Foundation
 
+func timePickerDisp(results: [(String, String)]) -> Int? {
+  write(CSI, "2J")
+  write(CSI, "1H")
+  print("Your blocked time slots:")
+  for (i, slot) in results.enumerated() {
+    print("Slot \(i + 1): \(slot.0) - \(slot.1)")
+  }
+  return nil
+
+}
+
 func timePicker(question: String) -> String {
   var hour = 9
   var minute = 0
