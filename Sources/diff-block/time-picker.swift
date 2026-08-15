@@ -1,14 +1,13 @@
 import ANSITerminal
 import Foundation
 
-func timePickerDisp(results: [(String, String)]) -> Int? {
+func timePickerDisp(results: [(String, String)]) {
   write(CSI, "2J")
   write(CSI, "1H")
   print("Your blocked time slots:")
   for (i, slot) in results.enumerated() {
     print("Slot \(i + 1): \(slot.0) - \(slot.1)")
   }
-  return nil
 
 }
 
