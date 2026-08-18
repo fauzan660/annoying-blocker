@@ -7,7 +7,13 @@ func unblockApp(path: String) {
   do {
     try process.run()
     process.waitUntilExit()
+    let status = process.terminationStatus
+    if status != 0 {
+      print("[ERROR] chmod +x failed for \(path) — exit code \(status)")
+    } else {
+      print("[OK] unblocked \(path)")
+    }
   } catch {
-    print("Error unblocking app at \(path)")
+    print("[ERROR] failed to launch chmod for \(path): \(error)")
   }
 }

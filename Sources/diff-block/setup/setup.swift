@@ -35,7 +35,7 @@ func runSetup() {
     }
     timePickerDisp(results: time_slots)
 
-    blockApp(named: app_list[app_name])
+    blockAppInit(named: app_list[app_name])
 
     var appSchedules: [TimeRange] = []
     for slot in time_slots {

@@ -7,7 +7,13 @@ func blockApp(path: String) {
   do {
     try process.run()
     process.waitUntilExit()
+    let status = process.terminationStatus
+    if status != 0 {
+      print("[ERROR] chmod -x failed for \(path) — exit code \(status)")
+    } else {
+      print("[OK] blocked \(path)")
+    }
   } catch {
-    print("Error blocking app at \(path)")
+    print("[ERROR] failed to launch chmod for \(path): \(error)")
   }
 }
