@@ -1,9 +1,9 @@
 import Foundation
 
 func runCheck() {
-  let fm = FileManager.default
-  let configDir = fm.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-    .appendingPathComponent("blockertool")
+  let userHome = "/Users/fauzantahir"
+  let configDir = URL(fileURLWithPath: userHome)
+    .appendingPathComponent("Library/Application Support/blockertool")
   let filePath = configDir.appendingPathComponent("blocker.json")
 
   guard let data = try? Data(contentsOf: filePath),
@@ -39,6 +39,7 @@ func runCheck() {
     do {
       try process.run()
       process.waitUntilExit()
+      print("permission to \(app.appName) restored")
     } catch {
       print("Error unblocking \(app.appName)")
     }

@@ -24,6 +24,7 @@ struct Check: ParsableCommand {
 
   mutating func run() {
     // build this next
-    print("Checker tool ran")
+    runCheck()
   }
+
 }
