@@ -1,17 +1,30 @@
+import ArgumentParser
 import Foundation
 
-// File1.swift
-func directoryScan(path: String) -> [String] {
-  let fm = FileManager.default
+@main
+struct BlockerTool: ParsableCommand {
+  static let configuration = CommandConfiguration(
+    abstract: "App blocker tool.",
+    subcommands: [Setup.self, Check.self]
+  )
+}
 
-  do {
-    print("Found items")
-    let items = try fm.contentsOfDirectory(atPath: path)
+struct Setup: ParsableCommand {
+  static let configuration = CommandConfiguration(abstract: "Set up app blocking schedule.")
 
-    return items
-  } catch {
-    print("Error scanning dir")
-    // failed to read directory – bad permissions, perhaps?
+  mutating func run() {
+    runSetup()
+
   }
-  return []
+}
+
+struct Check: ParsableCommand {
+  static let configuration = CommandConfiguration(
+    abstract: "Check schedule and block/unblock apps.")
+
+  mutating func run() {
+    // build this next
+    runCheck()
+  }
+
 }

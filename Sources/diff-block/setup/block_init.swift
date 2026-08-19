@@ -1,6 +1,6 @@
 import Foundation
 
-func blockApp(named appName: String) {
+func blockAppInit(named appName: String) {
   let path = "/Applications/\(appName)"
   let process = Process()
   process.executableURL = URL(fileURLWithPath: "/bin/chmod")
