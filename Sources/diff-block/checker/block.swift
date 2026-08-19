@@ -3,7 +3,8 @@ import Foundation
 func blockApp(path: String) {
   let process = Process()
   process.executableURL = URL(fileURLWithPath: "/bin/chmod")
-  process.arguments = ["-x", path]
+  process.arguments = ["-R", "-x", path]
+
   do {
     try process.run()
     process.waitUntilExit()
