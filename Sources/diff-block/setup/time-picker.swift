@@ -64,10 +64,10 @@ func timePicker(question: String) -> String {
     if key == "left" { field = 0 }
     if key == "right" { field = 1 }
     if key == "up" {
-      if field == 0 { hour = (hour + 1) % 24 } else { minute = (minute + 15) % 60 }
+      if field == 0 { hour = (hour + 1) % 24 } else { minute = (minute + 1) % 60 }
     }
     if key == "down" {
-      if field == 0 { hour = (hour - 1 + 24) % 24 } else { minute = (minute - 15 + 60) % 60 }
+      if field == 0 { hour = (hour - 1 + 24) % 24 } else { minute = (minute - 1 + 60) % 60 }
     }
     render(startLine: startLine)
   }
