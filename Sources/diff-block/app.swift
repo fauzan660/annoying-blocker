@@ -28,3 +28,13 @@ struct Check: ParsableCommand {
   }
 
 }
+struct Config: ParsableCommand {
+  static let configuration = CommandConfiguration(
+    abstract: "Change blocking settings")
+
+  mutating func run() {
+    // build this next
+    searchConfig()
+  }
+
+}
