@@ -22,6 +22,8 @@ func searchConfig() {
           options: ["Edit", "Remove"]
         )
         if rangeAction == 0 {
+          editTimeRange(appName: selectedApp.appName, rangeIndex: rangeChoice, schedule: schedule)
+
           // edit — leave empty for now
         } else {
           removeTimeRange(appName: selectedApp.appName, rangeIndex: rangeChoice, from: schedule)

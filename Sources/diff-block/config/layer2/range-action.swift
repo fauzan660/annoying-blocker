@@ -16,3 +16,13 @@ func addTimeRange(to appName: String, schedule: Schedule) {
     addToConfig(entry: updatedSchedule)
   }
 }
+func editTimeRange(appName: String, rangeIndex: Int, schedule: Schedule) {
+  let start = timePicker(question: "Edit start time:")
+  let end = timePicker(question: "Edit end time:")
+
+  var updatedSchedule = schedule
+  if let appIndex = updatedSchedule.apps.firstIndex(where: { $0.appName == appName }) {
+    updatedSchedule.apps[appIndex].times[rangeIndex] = TimeRange(startTime: start, endTime: end)
+    addToConfig(entry: updatedSchedule)
+  }
+}
