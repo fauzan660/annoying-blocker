@@ -14,7 +14,7 @@ func searchConfig() {
       let timeOptions = timeRangeMenu(app: selectedApp)
       let rangeChoice = confirmationPicker(question: "Time ranges:", options: timeOptions)
       if rangeChoice == selectedApp.times.count {
-        // "Add time range" — leave empty for now
+        addTimeRange(to: selectedApp.appName, schedule: schedule)
       } else {
         let selectedRange = selectedApp.times[rangeChoice]
         let rangeAction = confirmationPicker(
