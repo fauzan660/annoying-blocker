@@ -71,6 +71,8 @@ func timePicker(question: String) -> String {
     }
     render(startLine: startLine)
   }
+  write(CSI, "0m")
+
   cursorOn()
 
   return String(format: "%02d:%02d", hour, minute)
