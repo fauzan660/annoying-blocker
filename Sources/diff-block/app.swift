@@ -5,7 +5,7 @@ import Foundation
 struct BlockerTool: ParsableCommand {
   static let configuration = CommandConfiguration(
     abstract: "App blocker tool.",
-    subcommands: [Setup.self, Check.self]
+    subcommands: [Setup.self, Check.self, Config.self]
   )
 }
 
@@ -25,6 +25,16 @@ struct Check: ParsableCommand {
   mutating func run() {
     // build this next
     runCheck()
+  }
+
+}
+struct Config: ParsableCommand {
+  static let configuration = CommandConfiguration(
+    abstract: "Change blocking settings")
+
+  mutating func run() {
+    // build this next
+    searchConfig()
   }
 
 }

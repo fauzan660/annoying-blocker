@@ -7,7 +7,7 @@ struct TimeRange: Codable {
 
 struct AppSchedule: Codable {
   let appName: String
-  let times: [TimeRange]
+  var times: [TimeRange]
 }
 
 struct Schedule: Codable {
